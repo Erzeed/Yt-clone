@@ -17,7 +17,11 @@ import Loader from "../shared/loader";
 function Navbar() {
     const [searchQuery, setSearchQuery] = useState("");
     const navigate = useNavigate();
-    const { loading } = useContext(Context);
+    const { loading, setShowExpandNav } = useContext(Context);
+
+    const onHandleShowExpand = () => {
+        setShowExpandNav(true)
+    }
 
     const searchQueryHandler = (ev) => {
         if((ev?.key === "Enter" || ev === "searchButton") && searchQuery.length > 0){
@@ -30,7 +34,10 @@ function Navbar() {
         { loading && <Loader /> }
         <div className="flex gap-2 items-center">
             <div className="menu_navbar hover:rounded-full hover:bg-slate-800 h-10 w-10 items-center justify-center hidden md:flex ">
-                <SlMenu className="text-white text-xl cursor-pointer" />
+                <SlMenu 
+                    className="text-white text-xl cursor-pointer" 
+                    onClick={onHandleShowExpand}
+                />
             </div>
             <div className="logo_navbar">
                 <Link to="/" className="flex h-5 items-center">
