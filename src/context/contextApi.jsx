@@ -11,19 +11,19 @@ function AppContext(props) {
     const [mobileMenu, setMobileMenu] = useState();
     const [showExpandNav, setShowExpandNav] = useState(false);
 
-    useEffect(() => {
-        onHandleSelectCategory(selectCategory);
-    }, [selectCategory])
+    // useEffect(() => {
+    //     onHandleSelectCategory(selectCategory);
+    // }, [selectCategory])
 
-    const onHandleSelectCategory = (query) => {
-        setLoading(false);
-        // getData.search(`search/?q${query}`).then(({ contents }) => {
-        //     setSearchResult(contents)
-        //     setLoading(false)
-        // }).catch(err => {
-        //     console.log(err);
-        // })
-    }
+    // const onHandleSelectCategory = (query) => {
+    //     setLoading(true);
+    //     getData.search(`search/?q=${query}`).then(({ contents }) => {
+    //         setSearchResult(contents)
+    //         setLoading(false)
+    //     }).catch(err => {
+    //         console.log(err);
+    //     })
+    // }
 
     return(
         <Context.Provider value={{

@@ -30,7 +30,7 @@ function Navbar() {
     }
 
   return (
-    <div className="navbar sticky px-5 top-0 h-14 flex flex-row items-center justify-between bg-white dark:bg-black">
+    <div className="navbar sticky px-5 py-2 top-0 h-14 flex flex-row items-center justify-between bg-white  dark:bg-black">
         { loading && <Loader /> }
         <div className="flex gap-2 items-center">
             <div className="menu_navbar hover:rounded-full hover:bg-slate-800 h-10 w-10 items-center justify-center hidden md:flex ">

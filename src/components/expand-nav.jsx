@@ -29,7 +29,7 @@ function ExpandNav() {
 
   return (
     <div className={
-        `${showExpandNav == true ? "translate-x-0" : "-translate-x-full"} absolute left-0 flex top-0 z-10 h-full w-full transition-all duration-200`
+        `${showExpandNav == true ? "translate-x-0" : "-translate-x-full"} absolute z-20 left-0 flex top-0 h-full w-full transition-all duration-150`
     }>
         <div className="w-1/5 h-full bg-black text-white overflow-y-scroll">
             <div className="flex sticky top-0 bg-black gap-2 ml-5 py-1 items-center">
