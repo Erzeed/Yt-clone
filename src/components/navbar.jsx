@@ -3,10 +3,6 @@ import { Link, useNavigate } from "react-router-dom";
 
 import { SlMenu } from "react-icons/sl";
 import { IoIosSearch } from "react-icons/io";
-import { RiVideoAddLine } from "react-icons/ri";
-import { FiBell } from "react-icons/fi";
-import { CgClose } from "react-icons/cg";
-import { SiYoutubeshorts } from "react-icons/si";
 import { CgProfile } from "react-icons/cg";
 
 import logoYt from "../assets/yt-logo.png";
@@ -25,7 +21,7 @@ function Navbar() {
 
     const searchQueryHandler = (ev) => {
         if((ev?.key === "Enter" || ev === "searchButton") && searchQuery.length > 0){
-            navigate(`/search?/${searchQuery}`);
+            navigate(`/results/search_query/${searchQuery}`);
         }
     }
 

@@ -18,9 +18,54 @@ const getData = (() => {
 
     return videos;
   }
+  
+  async function videoDetail(id) {
+    const { data, status } = await axios.get(`${BASE_URL}/video/details?video_id=${id}`, options);
+
+    if (status !== 200) {
+      throw new Error(status);
+    }
+
+    return data;
+  }
+  
+  async function videoComment(id) {
+    const { data, status } = await axios.get(`${BASE_URL}/video/comments?video_id=${id}`, options);
+
+    if (status !== 200) {
+      throw new Error(status);
+    }
+    
+    return data;
+  }
+
+  async function channelDetail(id) {
+    const resp = await axios.get(`${BASE_URL}/channel/details?channel_id${id}`, options);
+
+    // if (status !== 200) {
+    //   throw new Error(status);
+    // }
+
+    // return videos;
+    console.log(resp)
+  }
+
+  async function searchVideo(search) {
+    const { data: { videos }, status } = await axios.get(`${BASE_URL}/search/?query=${search}&lang=id&order_by=this_month&country=id`, options);
+
+    if (status !== 200) {
+      throw new Error(status);
+    }
+
+    return videos;
+  }
 
   return {
     videoRecomendation,
+    videoDetail,
+    channelDetail,
+    videoComment,
+    searchVideo
   };
 })();
 

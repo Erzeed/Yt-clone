@@ -7,23 +7,23 @@ import getData from "../utils/api";
 
 function Home() {
   const [ dataVideo, setDataVideo] = useState([]);
-  const { loading, setLoading } = useContext(Context);
+  const { setLoading } = useContext(Context);
   
   useEffect(() => {
     const getDataVideo = async () => {
       setLoading(true)
-      await getData.videoRecomendation('jmOxGR32-Fg').then(resp => {
+      await getData.videoRecomendation('vMGI2EA3OWc').then(resp => {
         setDataVideo(resp)
+        console.log(resp);
         setLoading(false)
       }).catch(err => {
-        console.log(err)
+        console.log(err.code)
       })
     }
-    // getDataVideo();
+    getDataVideo();
 
-    // return () => getDataVideo()
   }, [])
-  console.log(dataVideo)
+
   return (
     <div className="w-full px-5 my-2 overflow-y-scroll">
       <div className="home-rec-cate sticky bg-black top-0 flex items-center h-[50px] w-full z-10">
@@ -41,8 +41,8 @@ function Home() {
             </div>
           </div>
       </div>
-      <div className="home-rec-video grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 2xl:grid-cols-5 gap-4 pt-5">
-        { loading == false ?
+      <div className="home-rec-video grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 2xl:grid-cols-5 gap-2 pt-5">
+        { dataVideo !== undefined ? 
           (dataVideo.map((item) => (
             <CardVideo
                   key={item.video_id}
