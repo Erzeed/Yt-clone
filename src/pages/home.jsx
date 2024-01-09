@@ -1,12 +1,14 @@
-import { useContext, useEffect, useState } from "react";
+import { Suspense, lazy, useContext, useEffect, useState } from "react";
 import { Context } from "../context/contextApi";
 
 import { RiArrowRightSLine } from "react-icons/ri";
+// const CardVideo = lazy(() => import("../components/card-video"))
 import CardVideo from "../components/card-video";
 import getData from "../utils/api";
+import CardSkeleton from "../components/skeleton/card-skeleton";
 
 function Home() {
-  const [ dataVideo, setDataVideo] = useState([]);
+  const [ dataVideo, setDataVideo] = useState();
   const { setLoading } = useContext(Context);
   
   useEffect(() => {
@@ -48,7 +50,11 @@ function Home() {
                   key={item.video_id}
                   {...item}
               />
-          ))) : (<p className="text-white text-center text-sm" >Loading...</p>)
+          ))) : (
+            Array.from({ length: 10 }).map((_, index) => (
+              <CardSkeleton key={index} /> // or provide a unique key as per your requirement
+            ))
+          )
         }
       </div>
     </div>

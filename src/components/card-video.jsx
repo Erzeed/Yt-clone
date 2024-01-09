@@ -1,4 +1,6 @@
 /* eslint-disable react/prop-types */
+import 'lazysizes';
+import 'lazysizes/plugins/parent-fit/ls.parent-fit';
 
 import { abbreviateNumber } from "js-abbreviation-number";
 import { Link } from "react-router-dom";
@@ -45,8 +47,8 @@ function CardVideo({
             <img
               className={`${
                 search == true ? "w-full" : "w-full"
-              } bg-auto h-full rounded-lg`}
-              src={thumbnails[1]?.url}
+              } bg-auto h-full rounded-lg lazyload`}
+              data-src={thumbnails[1]?.url}
               alt="boboboiy"
             />
             <div className="thumb-duration absolute text-xs font-bold right-1 bottom-0 rounded px-1 bg-black">

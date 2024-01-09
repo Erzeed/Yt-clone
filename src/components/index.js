@@ -4,6 +4,7 @@ import ExpandNav from "./expand-nav";
 import CardComment from "./cardComment";
 import CardVideo from "./card-video";
 import NotLogin from "./not-login";
+import Player from "./short-player";
 
 export {
     Navbar,
@@ -11,5 +12,6 @@ export {
     ExpandNav,
     CardComment,
     CardVideo,
-    NotLogin
+    NotLogin,
+    Player
 }

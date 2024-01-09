@@ -60,12 +60,23 @@ const getData = (() => {
     return videos;
   }
 
+  async function dataShort() {
+    const { data: { videos }, status } = await axios.get(`${BASE_URL}/channel/shorts?channel_id=UCFhzJ5UfoTlOxJT8xYoTuDw`, options);
+
+    if (status !== 200) {
+      throw new Error(status);
+    }
+    
+    return videos;
+  }
+
   return {
     videoRecomendation,
     videoDetail,
     channelDetail,
     videoComment,
-    searchVideo
+    searchVideo,
+    dataShort
   };
 })();
 

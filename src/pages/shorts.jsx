@@ -1,26 +1,32 @@
-import ReactPlayer from "react-player"
-
-import { BiSolidDislike } from "react-icons/bi";
-import { BiSolidLike } from "react-icons/bi";
-import { BiSolidCommentDetail } from "react-icons/bi";
-import { PiShareFatFill } from "react-icons/pi";
-
+import { Suspense, lazy, useEffect, useState } from "react"
+// import { Player } from "../components"
+const Player = lazy(() => import("../components/short-player"))
+import getData from "../utils/api";
 
 function Shorts() {
+    const [dataVideos ,setDataVideos] = useState([]);
+
+    useEffect(() => {
+        const getDataVideos = async () => {
+            await getData.dataShort().then(data => {
+                setDataVideos(data)
+            }).catch(err => {
+                console.log(err)
+            })
+        }
+        getDataVideos();
+    }, [])
   return (
-    <div className="text-white flex justify-center w-full h-full">
-        <div className="video w-80 h-full  bg-orange-200">
-            <ReactPlayer 
-                url={`https://www.youtube.com/shorts/HANEARC7nGA`}
-                controls
-                width="100%"
-                height="100%"
-                playing={true}
-            />
-        </div>
-        <div className="video-feature">
-            <p>feature</p>
-        </div>
+    <div className=" flex flex-col gap-5 w-full overflow-y-scroll snap-y">
+        <Suspense fallback={<div className="text-white">Loading...</div>}>
+            {
+                dataVideos && (
+                    dataVideos.map(data => (
+                        <Player key={data.video_id} id={data.video_id} />
+                    ))
+                )
+            }
+        </Suspense>
     </div>
   )
 }
